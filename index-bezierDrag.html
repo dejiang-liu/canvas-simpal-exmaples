@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/assets/logo.jpg" type="image/x-icon" />
+    <title>canvas</title>
+  </head>
+  <style>
+    body {
+      background-color: #eee;
+    }
+    .floatingControls {
+      position: absolute;
+      left: 150px;
+      top: 100px;
+      width: 300px;
+      padding: 20px;
+      border: thin solid rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 200, 0.1);
+      color: blue;
+      font: 14px Arial;
+      box-shadow: rgba(0, 0, 0, 0.2) 6px 6px 8px;
+      display: none;
+    }
+    .floatingControls p {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    #controls {
+      position: absolute;
+      left: 25px;
+      top: 25px;
+    }
+    #canvas {
+      background: #fff;
+      border: thin solid cornflowerblue;
+      cursor: pointer;
+      margin-left: 10px;
+      margin-top: 10px;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+  <body>
+    <canvas id="canvas" width="605" height="400">Canvas not supported</canvas>
+    <div class="" id="controls">
+      Stroke color:
+      <select name="" id="strokeStyleSelect">
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+        <option value="orange">orange</option>
+        <option value="cornflowerblue" selected>cornflowerblue</option>
+        <option value="goldenrod">goldenrod</option>
+        <option value="navy">navy</option>
+        <option value="purple">purple</option>
+      </select>
+      Guidewires:
+      <input type="checkbox" checked id="guidewireCheckbox" />
+      <button id="eraseAllButton">ERASE ALL</button>
+    </div>
+    <div class="floatingControls" id="instructions">
+      <p>Drag the curve end and controls points to change the shape of curve.</p>
+      <p>when you are done dragging end and control points, click outside of the points to finalize the curve.</p>
+      <input type="button" id="instructionsOkayButton" value="Okay" autofocus>
+      <input type="button" id="instructionsNoMoreButton" value="Do not show these instructions again">
+    </div>
+  </body>
+  <script src="./js/jquery.js"></script>
+  <script type="module" src="./js/chapter2/dragBeziaCurve.js"></script>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/assets/logo.jpg" type="image/x-icon" />
+    <title>canvas</title>
+  </head>
+  <style>
+    #canvas {
+      background: #fff;
+      border: thin solid cornflowerblue;
+      cursor: pointer;
+      margin-left: 10px;
+      margin-top: 10px;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    }
+    #controls {
+      position: absolute;
+      left: 25px;
+      top: 25px;
+    }
+  </style>
+  <body>
+    <canvas id="canvas" width="1000" height="500">Canvas not supported</canvas>
+    <div class="" id="controls">
+      Stroke color:
+      <select name="" id="strokeStyleSelect">
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+        <option value="orange">orange</option>
+        <option value="cornflowerblue" selected>cornflowerblue</option>
+        <option value="goldenrod">goldenrod</option>
+        <option value="navy">navy</option>
+        <option value="purple">purple</option>
+      </select>
+      fill color:
+      <select name="" id="fillStyleSelect">
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+        <option value="orange">orange</option>
+        <option value="cornflowerblue" selected>cornflowerblue</option>
+        <option value="goldenrod">goldenrod</option>
+        <option value="navy">navy</option>
+        <option value="purple">purple</option>
+      </select>
+      sides select:
+      <select name="" id="sidesSelect">
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8" selected>8</option>
+        <option value="9">9</option>
+      </select>
+      startAngleSelect:
+      <select name="" id="startAngleSelect">
+        <option value="0" selected>0</option>
+        <option value="30">30</option>
+        <option value="60">60</option>
+        <option value="90">90</option>
+      </select>
+      Guidewires:
+      <input type="checkbox" checked id="guidewireCheckbox" />
+      fillCheckbox:
+      <input type="checkbox" checked id="fillCheckbox" />
+      editCheckbox:
+      <input type="checkbox" id="editCheckbox" />
+      <button id="eraseAllButton">ERASE ALL</button>
+    </div>
+  </body>
+  <script src="./js/jquery.js"></script>
+  <!-- <script type="module" src="./js/index.js"></script> -->
+  <!-- <script type="module" src="./js/chapter2/drawErase.js"></script> -->
+  <script type="module" src="./js/chapter2/dragGraph.js"></script>
+</html>
