@@ -47,34 +47,26 @@
         <option value="navy">navy</option>
         <option value="purple">purple</option>
       </select>
-      sides select:
-      <select name="" id="sidesSelect">
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8" selected>8</option>
+      Draw radio: 
+      <input type="checkbox" id="drawRadio" />
+      Eraser radio: 
+      <input type="checkbox" id="eraserRadio" />
+      Eraser shape select:
+      <select name="" id="eraserShapeSelect">
+        <option value="circle" checked>circle</option>
+        <option value="square">square</option>
         <option value="9">9</option>
       </select>
-      startAngleSelect:
-      <select name="" id="startAngleSelect">
-        <option value="0" selected>0</option>
+      Eraser width select:
+      <select name="" id="eraserWidthSelect">
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20" selected>20</option>
+        <option value="25">25</option>
         <option value="30">30</option>
-        <option value="60">60</option>
-        <option value="90">90</option>
       </select>
-      Guidewires:
-      <input type="checkbox" checked id="guidewireCheckbox" />
-      fillCheckbox:
-      <input type="checkbox" checked id="fillCheckbox" />
-      editCheckbox:
-      <input type="checkbox" id="editCheckbox" />
-      <button id="eraseAllButton">ERASE ALL</button>
     </div>
   </body>
   <script src="./js/jquery.js"></script>
-  <!-- <script type="module" src="./js/index.js"></script> -->
-  <!-- <script type="module" src="./js/chapter2/drawErase.js"></script> -->
-  <script type="module" src="./js/chapter2/dragGraph.js"></script>
+  <script type="module" src="./js/chapter2/clippingRegion.js"></script>
 </html>

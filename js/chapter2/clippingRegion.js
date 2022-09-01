@@ -51,7 +51,6 @@ const updateRubberBandRectangle = (loc) => {
   rubberbandRect.left = loc.x > mousedown.x ? mousedown.x : loc.x;
   rubberbandRect.top = loc.y > mousedown.y ? mousedown.y : loc.y;
 }
-
 const drawRubberbandShape = loc => {
   let angle = Math.atan(rubberbandRect.height / rubberbandRect.width),
     radius = rubberbandRect.height / Math.sin(angle);
@@ -63,6 +62,31 @@ const drawRubberbandShape = loc => {
   context.stroke();
   context.fill();
 }
+// GuidWires .............
+const drawHorizontalLine = (y) => {
+  context.beginPath();
+  context.moveTo(0, y + 0.5);
+  context.lineTo(context.canvas.width, y + 0.5);
+  context.stroke();
+}
+
+const drawVerticalLine = (x) => {
+  context.beginPath();
+  context.moveTo(x + 0.5, 0);
+  context.lineTo(x + 0.5, context.canvas.height);
+  context.stroke();
+}
+
+const drawGuidewires = (x, y) => {
+  context.save();
+  // context.setLineDash([5, 5])
+  context.strokeStyle = 'rgba(0, 0, 230, 0.4';
+  context.lineWidth = 0.5;
+  drawVerticalLine(x);
+  drawHorizontalLine(y);
+  context.restore();
+}
+
 
 const updateRubberband = loc => {
   updateRubberBandRectangle(loc);
@@ -72,8 +96,9 @@ const updateRubberband = loc => {
 const setDrawPathForEraser = loc => {
   let eraserWidth = parseFloat(eraserWidthSelect.value);
   context.beginPath();
+  context.strokeStyle = '#fff';
   eraserShapeSelect.value === 'circle' ?
-    context.arc(loc.x, loc.y, eraserWidth / 2, 0, Math.PI, false) :
+    context.arc(loc.x, loc.y, eraserWidth / 2, 0, Math.PI * 2, false) :
     context.rect(loc.x - eraserWidth / 2, loc.y - eraserWidth / 2, eraserWidth, eraserWidth);
   context.clip();
 }
@@ -81,12 +106,12 @@ const setErasePathForEraser = () => {
   let eraserWidth = parseFloat(eraserWidthSelect.value);
   context.beginPath();
   eraserShapeSelect.value === 'circle' ?
-    context.arc(lastX, lastY, eraserWidth / 2 + ERASER_LINE_WIDTH, 0, false) :
+    context.arc(lastX, lastY, eraserWidth / 2 + ERASER_LINE_WIDTH, 0, Math.PI * 2, false) :
     context.rect(lastX - eraserWidth / 2 - ERASER_LINE_WIDTH, lastY - eraserWidth / 2 - ERASER_LINE_WIDTH, eraserWidth + ERASER_LINE_WIDTH * 2, eraserWidth + ERASER_LINE_WIDTH * 2);
   context.clip();
 }
 const setEraserAttributes = () => {
-  context.lineWidth = ERASER_LINE_WIDTH;
+  context.lineWidth = 'white';
   context.shadowColor = ERASER_SHADOW_STYLE;
   context.shadowOffsetX = ERASER_SHADOW_OFFSET;
   context.shadowOffsetY = ERASER_SHADOW_OFFSET;
@@ -102,4 +127,63 @@ const eraseLast = () => {
 const drawEraser = loc => {
   context.save();
   setEraserAttributes();
+  setDrawPathForEraser(loc);
+  context.stroke();
+  context.clearRect(0, 0, canvas.width, canvas.height); // 清除剪辑区域内的图画；
+  context.restore();
 }
+
+canvas.onmousedown = e => {
+  let loc = windowToCanvas(e.clientX, e.clientY);
+  e.preventDefault();
+  if (drawRadio.checked) {
+    saveDrawingSurface();
+  }
+  mousedown.x = loc.x;
+  mousedown.y = loc.y;
+  lastX = loc.x;
+  lastY = loc.y;
+
+  dragging = true;
+}
+
+canvas.onmousemove = e => {
+  let loc;
+  if (dragging) {
+    e.preventDefault();
+    loc = windowToCanvas(e.clientX, e.clientY);
+    if (drawRadio.checked) {
+      restoreDrawingSurface();
+      updateRubberband(loc);
+      if (guidewires) {
+        drawGuidewires(loc.x, loc.y);
+      }
+    } else {
+      console.log('earse draw');
+      eraseLast();
+      drawEraser(loc);
+    }
+    lastX = loc.x;
+    lastY = loc.y;
+  }
+}
+canvas.onmouseup = e => {
+  let loc = windowToCanvas(e.clientX, e.clientY);
+  if (drawRadio.checked) {
+    restoreDrawingSurface();
+    updateRubberband(loc);
+  }
+  if (eraserRadio.checked) {
+    eraseLast();
+  }
+  dragging = false;
+}
+strokeStyleSelect.onchange = e => {
+  context.strokeStyle = strokeStyleSelect.value;
+}
+fillStyleSelect.onchange = e => {
+  context.fillStyle = fillStyleSelect.value;
+}
+context.strokeStyle = strokeStyleSelect.value;
+context.fillStyle = fillStyleSelect.value;
+drawGrid(context, GRID_LINE_COLOR, GRID_HORIZONTAL_SPACING, GRID_VERTICAL_SPACING);
