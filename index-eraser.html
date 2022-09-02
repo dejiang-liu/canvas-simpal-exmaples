@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/assets/logo.jpg" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="./style/common.css" />
     <title>canvas</title>
   </head>
   <style>
@@ -22,22 +21,10 @@
       left: 25px;
       top: 25px;
     }
-    .controls-box {
-      display: flex;
-      height: 25px;
-      align-items: flex-end;
-      justify-content: flex-start;
-    }
   </style>
   <body>
     <canvas id="canvas" width="1000" height="500">Canvas not supported</canvas>
-    <div class="controls-box" id="controls">
-      <!-- <span class="lf-10">fill checkbox: </span>
-      <input type="checkbox" id="fillCheckbox" />
-      <span class="lf-10">stroke checkbox: </span>
-      <input type="checkbox" id="strokeCheckbox" />
-      <span class="lf-10">shadow checkbox:</span>
-      <input type="checkbox" id="shadowCheckbox" /> -->
+    <div class="" id="controls">
       Stroke color:
       <select name="" id="strokeStyleSelect">
         <option value="red">red</option>
@@ -60,19 +47,26 @@
         <option value="navy">navy</option>
         <option value="purple">purple</option>
       </select>
-      fontsize:
-      <select name="" id="sizeSelect">
+      Draw radio: 
+      <input type="checkbox" id="drawRadio" />
+      Eraser radio: 
+      <input type="checkbox" id="eraserRadio" />
+      Eraser shape select:
+      <select name="" id="eraserShapeSelect">
+        <option value="circle" checked>circle</option>
+        <option value="square">square</option>
+        <option value="9">9</option>
+      </select>
+      Eraser width select:
+      <select name="" id="eraserWidthSelect">
         <option value="10">10</option>
-        <option value="10">10</option>
-        <option value="10">10</option>
-        <option value="13">13</option>
-        <option value="14" selected>14</option>
         <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
+        <option value="20" selected>20</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
       </select>
     </div>
   </body>
-  <!-- <script type="module" src="./js/chapter3/index.js"></script> -->
-  <script type="module" src="./js/chapter3/textlineDraw.js"></script>
+  <script src="./js/jquery.js"></script>
+  <script type="module" src="./js/chapter2/clippingRegion.js"></script>
 </html>

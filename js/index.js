@@ -1,9 +1,9 @@
 import { drawGrid } from "./chapter2/drawGrid.js";
-import { drawAxes } from './chapter2/axis.js';
-import { drawRoundeRect } from './chapter2/arcto.js';
+import { drawAxes } from './chapter2/axis.js.js.js';
+import { drawRoundeRect } from './chapter2/arcto.js.js.js';
 import { readyDraw, drawDial } from './chapter2/drawDial.js'
 import { drawArrow, drawBezierPoints } from './chapter2/bezierCurve.js'
-import { drawControlPoints, drawEndPoints, drawBezierCurve } from './chapter2/bezierCurve3th.js'
+import { drawControlPoints, drawEndPoints, drawBezierCurve } from './chapter2/bezierCurve3th.js.js.js'
 import { drawRubberbandShape } from './chapter2/polygon.js'
 
 let canvas = document.getElementById("canvas"),
