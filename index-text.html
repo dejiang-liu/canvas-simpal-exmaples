@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/assets/logo.jpg" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="./style/common.css" />
+    <title>canvas</title>
+  </head>
+  <style>
+    #canvas {
+      background: #fff;
+      border: thin solid cornflowerblue;
+      cursor: pointer;
+      margin-left: 10px;
+      margin-top: 10px;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    }
+    #controls {
+      position: absolute;
+      left: 25px;
+      top: 25px;
+    }
+    .controls-box {
+      display: flex;
+      height: 25px;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+  </style>
+  <body>
+    <canvas id="canvas" width="1000" height="500">Canvas not supported</canvas>
+    <div class="controls-box" id="controls">
+      <!-- <span class="lf-10">fill checkbox: </span>
+      <input type="checkbox" id="fillCheckbox" />
+      <span class="lf-10">stroke checkbox: </span>
+      <input type="checkbox" id="strokeCheckbox" />
+      <span class="lf-10">shadow checkbox:</span>
+      <input type="checkbox" id="shadowCheckbox" /> -->
+      Stroke color:
+      <select name="" id="strokeStyleSelect">
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+        <option value="orange">orange</option>
+        <option value="cornflowerblue" selected>cornflowerblue</option>
+        <option value="goldenrod">goldenrod</option>
+        <option value="navy">navy</option>
+        <option value="purple">purple</option>
+      </select>
+      fill color:
+      <select name="" id="fillStyleSelect">
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+        <option value="orange">orange</option>
+        <option value="cornflowerblue" selected>cornflowerblue</option>
+        <option value="goldenrod">goldenrod</option>
+        <option value="navy">navy</option>
+        <option value="purple">purple</option>
+      </select>
+      fontsize:
+      <select name="" id="sizeSelect">
+        <option value="10">10</option>
+        <option value="10">10</option>
+        <option value="10">10</option>
+        <option value="13">13</option>
+        <option value="14" selected>14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+      </select>
+    </div>
+  </body>
+  <!-- <script type="module" src="./js/chapter3/index.js"></script> -->
+  <script type="module" src="./js/chapter3/textlineDraw.js"></script>
+</html>
